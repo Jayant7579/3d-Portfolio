@@ -79,7 +79,7 @@ export default function App() {
         </div>
 
         <Section id="about" title="About" subtitle="A quick snapshot of what I do and why.">
-          <div className="glass rounded-2xl p-6 text-sm leading-relaxed text-slate-200 sm:text-base">
+          <div className="glass rounded-xl p-4 text-xs leading-relaxed text-slate-200 sm:p-5 sm:text-sm">
             {profile.about}
           </div>
         </Section>

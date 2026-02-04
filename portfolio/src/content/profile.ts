@@ -15,15 +15,19 @@ export type Experience = {
 export const profile = {
   name: 'Jayant Chauhan',
   title: 'Software Engineer • 3D / Web • GenAI',
-  location: 'City, Country',
+  location: 'Ghaziabad, India',
   tagline:
-    'I build fast, delightful web experiences—now with an interactive 3D twist.',
+    'Engineer by mindset, AI by passion',
   about:
-    "Write a short bio here. Keep it punchy: what you do, what you're into, and what you're looking for.",
+    `Im a Computer Science graduate who enjoys building software that is thoughtful, reliable, and impactful. My interest in technology started with web development, where I learned how good design and clean code come together to create meaningful user experiences. Over time, this curiosity expanded into backend systems and artificial intelligence, where I became fascinated by how data and logic power real-world applications. I have hands-on experience working with frontend technologies like React, backend development using APIs and databases, and building AI-driven solutions using Python and machine learning concepts. I enjoy understanding how systems work end to end—from user interfaces to data flow, business logic, and intelligent decision-making. What excites me most is the process of learning by building, experimenting, and continuously improving.
+
+I approach problems with a balance of creativity and structure. I value clean architecture, attention to detail, and writing code that is easy to understand and maintain. I’m comfortable collaborating with teams, learning from feedback, and adapting quickly in fast-paced environments.
+
+As an early-career engineer, I’m focused on growing my skills while contributing to projects that have real impact. I’m especially motivated by roles where I can combine software engineering with modern technologies like AI to build solutions that truly matter.`,
   socials: [
-    { label: 'GitHub', href: 'https://github.com/your-handle' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/your-handle/' },
-    { label: 'Email', href: 'mailto:you@example.com' },
+    { label: 'GitHub', href: 'https://github.com/jayant7579' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jayant-chauhan-282358227/' },
+    { label: 'Email', href: 'mailto:j.c9639713047@gmail.com' },
   ],
   skills: [
     { name: 'TypeScript', level: 'Core' },
