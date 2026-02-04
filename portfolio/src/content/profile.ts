@@ -13,7 +13,7 @@ export type Experience = {
 }
 
 export const profile = {
-  name: 'Your Name',
+  name: 'Jayant Chauhan',
   title: 'Software Engineer • 3D / Web • GenAI',
   location: 'City, Country',
   tagline:
