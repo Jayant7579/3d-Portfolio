@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from 'lucide-react'
 import { ContactForm } from './components/ContactForm'
@@ -28,9 +28,15 @@ export default function App() {
     offset: ['start start', 'end start'],
   })
 
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1.05, 0.95])
-  const heroX = useTransform(scrollYProgress, [0, 1], [0, -180])
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, -60])
+  // Staged transforms: first grow (0 -> ~0.7), then glide left (0.55 -> 1)
+  const rawScale = useTransform(scrollYProgress, [0, 0.35, 0.7, 1], [1, 1.08, 1.16, 1.16])
+  const rawX = useTransform(scrollYProgress, [0, 0.55, 1], [0, -40, -200])
+  const rawY = useTransform(scrollYProgress, [0, 1], [0, -80])
+
+  // Add a spring for premium smoothness
+  const heroScale = useSpring(rawScale, { stiffness: 90, damping: 16, mass: 0.8 })
+  const heroX = useSpring(rawX, { stiffness: 90, damping: 16, mass: 0.8 })
+  const heroY = useSpring(rawY, { stiffness: 90, damping: 16, mass: 0.8 })
 
   return (
     <div id="top" className="min-h-screen">
@@ -41,62 +47,58 @@ export default function App() {
           <motion.div
             ref={heroRef}
             style={{ scale: heroScale, x: heroX, y: heroY }}
-            className="relative h-[70vh] w-screen max-w-none"
+            className="relative h-[90vh] w-screen max-w-none"
           >
             <Hero3D />
-          </motion.div>
-        </div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent" />
+            <div className="absolute inset-0 flex items-center px-6 py-10 sm:px-10 lg:px-16">
+              <div className="max-w-xl space-y-5 rounded-2xl bg-slate-950/50 p-5 shadow-lg backdrop-blur md:p-6">
+                <motion.h1
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45 }}
+                  className="text-3xl font-semibold tracking-tight text-slate-50 sm:text-5xl"
+                >
+                  {profile.name}
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.05 }}
+                  className="text-base text-slate-200 sm:text-lg"
+                >
+                  {profile.tagline}
+                </motion.p>
 
-        <div className="mx-auto w-full max-w-6xl px-5 pt-10">
-          <div className="grid items-start gap-10 md:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45 }}
-                className="text-3xl font-semibold tracking-tight text-slate-50 sm:text-5xl"
-              >
-                {profile.name}
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.05 }}
-                className="mt-3 text-base text-slate-300 sm:text-lg"
-              >
-                {profile.tagline}
-              </motion.p>
+                <div className="flex flex-wrap gap-2">
+                  <Pill>
+                    <MapPin className="h-4 w-4 text-cyan-300" />
+                    <span>{profile.location}</span>
+                  </Pill>
+                  <Pill>
+                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                    <span>Open to opportunities</span>
+                  </Pill>
+                </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                <Pill>
-                  <MapPin className="h-4 w-4 text-cyan-300" />
-                  <span>{profile.location}</span>
-                </Pill>
-                <Pill>
-                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                  <span>Open to opportunities</span>
-                </Pill>
-              </div>
-
-              <div className="mt-7 flex flex-wrap items-center gap-3">
-                {profile.socials.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target={s.href.startsWith('http') ? '_blank' : undefined}
-                    rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
-                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-100 transition hover:bg-white/10"
-                  >
-                    {iconByLabel[s.label] ?? <ArrowUpRight className="h-4 w-4" />}
-                    <span>{s.label}</span>
-                    <ArrowUpRight className="h-4 w-4 opacity-70" />
-                  </a>
-                ))}
+                <div className="flex flex-wrap items-center gap-3">
+                  {profile.socials.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target={s.href.startsWith('http') ? '_blank' : undefined}
+                      rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-100 transition hover:bg-white/10"
+                    >
+                      {iconByLabel[s.label] ?? <ArrowUpRight className="h-4 w-4" />}
+                      <span>{s.label}</span>
+                      <ArrowUpRight className="h-4 w-4 opacity-70" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
-
-            <div className="hidden md:block" />
-          </div>
+          </motion.div>
         </div>
 
         <Section id="about" title="About" subtitle="">
