@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from 'lucide-react'
 import { ContactForm } from './components/ContactForm'
 import { Hero3D } from './components/Hero3D'
@@ -21,12 +22,32 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const heroRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1.05, 0.95])
+  const heroX = useTransform(scrollYProgress, [0, 1], [0, -180])
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, -60])
+
   return (
     <div id="top" className="min-h-screen">
       <Navbar />
 
       <main>
-        <div className="mx-auto w-full max-w-6xl px-5 pt-12">
+        <div className="w-screen max-w-none overflow-hidden">
+          <motion.div
+            ref={heroRef}
+            style={{ scale: heroScale, x: heroX, y: heroY }}
+            className="relative h-[70vh] w-screen max-w-none"
+          >
+            <Hero3D />
+          </motion.div>
+        </div>
+
+        <div className="mx-auto w-full max-w-6xl px-5 pt-10">
           <div className="grid items-start gap-10 md:grid-cols-[1.05fr_0.95fr]">
             <div>
               <motion.h1
@@ -74,13 +95,18 @@ export default function App() {
               </div>
             </div>
 
-            <Hero3D />
+            <div className="hidden md:block" />
           </div>
         </div>
 
-        <Section id="about" title="About" subtitle="A quick snapshot of what I do and why.">
-          <div className="glass rounded-xl p-4 text-xs leading-relaxed text-slate-200 sm:p-5 sm:text-sm">
-            {profile.about}
+        <Section id="about" title="About" subtitle="">
+          <div className="glass relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 via-slate-900/30 to-slate-950/50 p-6 shadow-lg sm:p-7">
+            <div className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-violet-500/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-14 right-0 h-36 w-36 rounded-full bg-cyan-400/15 blur-3xl" />
+            <div className="relative space-y-3 text-sm leading-relaxed text-slate-100 sm:text-base sm:leading-7">
+              <p className="text-base font-semibold text-slate-50 sm:text-lg">Who I am</p>
+              <p className="text-slate-400">{profile.about}</p>
+            </div>
           </div>
         </Section>
 

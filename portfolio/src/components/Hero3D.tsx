@@ -29,7 +29,7 @@ function Knot() {
 
 export function Hero3D() {
   return (
-    <div className="relative h-[340px] w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-950/30 md:h-[420px]">
+    <div className="relative h-[75vh] w-screen max-w-none overflow-hidden bg-slate-950/30 md:h-[85vh]">
       <Canvas
         dpr={[1, 2]}
         camera={{ position: [0, 0.2, 4.5], fov: 45 }}
