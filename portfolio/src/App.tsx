@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from 'lucide-react'
 import { ContactForm } from './components/ContactForm'
 import { Hero3D } from './components/Hero3D'
@@ -22,86 +21,62 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  })
-
-  // Staged transforms: first grow (0 -> ~0.7), then glide left (0.55 -> 1)
-  const rawScale = useTransform(scrollYProgress, [0, 0.35, 0.7, 1], [1, 1.08, 1.16, 1.16])
-  const rawX = useTransform(scrollYProgress, [0, 0.55, 1], [0, -40, -200])
-  const rawY = useTransform(scrollYProgress, [0, 1], [0, -80])
-
-  // Add a spring for premium smoothness
-  const heroScale = useSpring(rawScale, { stiffness: 90, damping: 16, mass: 0.8 })
-  const heroX = useSpring(rawX, { stiffness: 90, damping: 16, mass: 0.8 })
-  const heroY = useSpring(rawY, { stiffness: 90, damping: 16, mass: 0.8 })
-
   return (
     <div id="top" className="min-h-screen">
+      <div className="fixed inset-0 -z-10">
+        <Hero3D />
+      </div>
       <Navbar />
 
-      <main>
-        <div className="w-screen max-w-none overflow-hidden">
-          <motion.div
-            ref={heroRef}
-            style={{ scale: heroScale, x: heroX, y: heroY }}
-            className="relative h-[90vh] w-screen max-w-none"
-          >
-            <Hero3D />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent" />
-            <div className="absolute inset-0 flex items-center px-6 py-10 sm:px-10 lg:px-16">
-              <div className="max-w-xl space-y-5 rounded-2xl bg-slate-950/50 p-5 shadow-lg backdrop-blur md:p-6">
-                <motion.h1
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45 }}
-                  className="text-3xl font-semibold tracking-tight text-slate-50 sm:text-5xl"
-                >
-                  {profile.name}
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: 0.05 }}
-                  className="text-base text-slate-200 sm:text-lg"
-                >
-                  {profile.tagline}
-                </motion.p>
+      <main className="mx-auto w-full max-w-5xl px-5 pt-10 pb-14">
+        <div>
+          <section className="pb-10">
+            <motion.h1
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45 }}
+              className="text-3xl font-semibold tracking-tight text-slate-50 sm:text-5xl"
+            >
+              {profile.name}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.05 }}
+              className="mt-3 text-base text-slate-300 sm:text-lg"
+            >
+              {profile.tagline}
+            </motion.p>
 
-                <div className="flex flex-wrap gap-2">
-                  <Pill>
-                    <MapPin className="h-4 w-4 text-cyan-300" />
-                    <span>{profile.location}</span>
-                  </Pill>
-                  <Pill>
-                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                    <span>Open to opportunities</span>
-                  </Pill>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  {profile.socials.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target={s.href.startsWith('http') ? '_blank' : undefined}
-                      rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
-                      className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-100 transition hover:bg-white/10"
-                    >
-                      {iconByLabel[s.label] ?? <ArrowUpRight className="h-4 w-4" />}
-                      <span>{s.label}</span>
-                      <ArrowUpRight className="h-4 w-4 opacity-70" />
-                    </a>
-                  ))}
-                </div>
-              </div>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Pill>
+                <MapPin className="h-4 w-4 text-cyan-300" />
+                <span>{profile.location}</span>
+              </Pill>
+              <Pill>
+                <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                <span>Open to opportunities</span>
+              </Pill>
             </div>
-          </motion.div>
-        </div>
 
-        <Section id="about" title="About" subtitle="">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              {profile.socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith('http') ? '_blank' : undefined}
+                  rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
+                  className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-100 transition hover:bg-white/10"
+                >
+                  {iconByLabel[s.label] ?? <ArrowUpRight className="h-4 w-4" />}
+                  <span>{s.label}</span>
+                  <ArrowUpRight className="h-4 w-4 opacity-70" />
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <Section id="about" title="About" subtitle="">
           <div className="glass relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 via-slate-900/30 to-slate-950/50 p-6 shadow-lg sm:p-7">
             <div className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-violet-500/20 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-14 right-0 h-36 w-36 rounded-full bg-cyan-400/15 blur-3xl" />
@@ -110,9 +85,9 @@ export default function App() {
               <p className="text-slate-400">{profile.about}</p>
             </div>
           </div>
-        </Section>
+          </Section>
 
-        <Section id="skills" title="Skills" subtitle="Tools I use to ship reliable, polished work.">
+          <Section id="skills" title="Skills" subtitle="Tools I use to ship reliable, polished work.">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {profile.skills.map((s) => (
               <div key={s.name} className="glass rounded-2xl p-5">
@@ -127,9 +102,9 @@ export default function App() {
               </div>
             ))}
           </div>
-        </Section>
+          </Section>
 
-        <Section id="projects" title="Projects" subtitle="Selected work with clear impact and ownership.">
+          <Section id="projects" title="Projects" subtitle="Selected work with clear impact and ownership.">
           <div className="grid gap-4 lg:grid-cols-2">
             {profile.projects.map((p) => (
               <article key={p.title} className="glass rounded-2xl p-6">
@@ -164,9 +139,9 @@ export default function App() {
               </article>
             ))}
           </div>
-        </Section>
+          </Section>
 
-        <Section id="experience" title="Experience" subtitle="Where I’ve delivered value in real teams.">
+          <Section id="experience" title="Experience" subtitle="Where I’ve delivered value in real teams.">
           <div className="grid gap-4">
             {profile.experience.map((e) => (
               <article key={`${e.org}-${e.role}`} className="glass rounded-2xl p-6">
@@ -185,9 +160,9 @@ export default function App() {
               </article>
             ))}
           </div>
-        </Section>
+          </Section>
 
-        <Section id="achievements" title="Achievements" subtitle="Highlights worth calling out.">
+          <Section id="achievements" title="Achievements" subtitle="Highlights worth calling out.">
           <div className="glass rounded-2xl p-6">
             <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
               {profile.achievements.map((a) => (
@@ -195,13 +170,13 @@ export default function App() {
               ))}
             </ul>
           </div>
-        </Section>
+          </Section>
 
-        <Section
+          <Section
           id="contact"
           title="Contact"
           subtitle="Send a message here, or wire up EmailJS for direct delivery."
-        >
+          >
           <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
             <div className="glass rounded-2xl p-6">
               <ContactForm />
@@ -239,14 +214,15 @@ export default function App() {
               </p>
             </div>
           </div>
-        </Section>
+          </Section>
 
-        <footer className="mx-auto w-full max-w-6xl px-5 pb-14 text-xs text-slate-400">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6">
-            <span>© {new Date().getFullYear()} {profile.name}</span>
-            <span className="opacity-80">Built with React, Vite, and Three.js</span>
-          </div>
-        </footer>
+          <footer className="mt-8 border-t border-white/10 pt-6 text-xs text-slate-400">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <span>© {new Date().getFullYear()} {profile.name}</span>
+              <span className="opacity-80">Built with React, Vite, and Three.js</span>
+            </div>
+          </footer>
+        </div>
       </main>
     </div>
   )

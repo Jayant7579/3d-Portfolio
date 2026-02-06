@@ -14,7 +14,7 @@ export type Experience = {
 
 export const profile = {
   name: 'Jayant Chauhan',
-  title: 'Software Engineer • 3D / Web • GenAI',
+  title: 'Software Engineer • Web Developer • GenAI',
   location: 'Ghaziabad, India',
   tagline:
     'Engineer by mindset, AI by passion',
@@ -31,14 +31,15 @@ As an early-career engineer, I’m focused on growing my skills while contributi
   ],
   skills: [
     { name: 'TypeScript', level: 'Core' },
-    { name: 'React', level: 'Core' },
+    { name: 'React', level: 'Familiar' },
     { name: 'Three.js', level: 'Proficient' },
     { name: 'Node.js', level: 'Proficient' },
     { name: 'Python', level: 'Familiar' },
+
   ] satisfies Skill[],
   projects: [
     {
-      title: 'Project One',
+      title: 'Task Manager WebApp',
       description:
         'A short, outcome-focused description. Mention what problem it solved and the impact.',
       tech: ['React', 'TypeScript', 'Three.js'],
