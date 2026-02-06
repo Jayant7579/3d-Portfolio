@@ -71,7 +71,7 @@ function ScrollDrivenKnot() {
 
     const wave = 0.5 - 0.5 * Math.cos(p * Math.PI * 4)
     const baseScale = Math.min(viewport.width, viewport.height) * 0.36
-    const targetScale = baseScale * (1.05 + wave * 0.12)
+    const targetScale = baseScale * (1.0 + wave * 0.12)
 
     const k = Math.min(1, delta * 6)
 
@@ -105,12 +105,12 @@ export function Hero3D() {
     <div className="hero3d-canvas-wrapper h-full w-full">
       <Canvas
         dpr={[1, 2]}
-        camera={{ position: [0, 0, 3.6], fov: 48 }}
+        camera={{ position: [0, 0, 3.0], fov: 25 }}
         gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.45} />
-        <directionalLight position={[4, 3, 2]} intensity={1.35} />
+        <directionalLight position={[4, 3, 2]} intensity={1.0} />
         <pointLight position={[-2, -2, 3]} intensity={0.45} color="#1e3a8a" />
         <Environment preset="city" />
         <ScrollDrivenKnot />
