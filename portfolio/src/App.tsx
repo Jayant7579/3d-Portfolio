@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { ContactForm } from './components/ContactForm'
 import { Hero3D } from './components/Hero3D'
 import { Navbar } from './components/Navbar'
@@ -21,15 +22,39 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const [phase, setPhase] = useState<'loading' | 'fading' | 'ready'>('loading')
+
+  useEffect(() => {
+    const fillTimer = window.setTimeout(() => setPhase('fading'), 2800)
+    const readyTimer = window.setTimeout(() => setPhase('ready'), 3400)
+    return () => {
+      window.clearTimeout(fillTimer)
+      window.clearTimeout(readyTimer)
+    }
+  }, [])
+
   return (
     <div id="top" className="min-h-screen">
-      <div className="fixed inset-0 -z-10">
-        <Hero3D />
-      </div>
-      <Navbar />
+      {phase !== 'ready' ? (
+        <div
+          className={`loader-screen${phase === 'fading' ? ' loader-screen--fade' : ''}`}
+          aria-label="Loading"
+        >
+          <div className="loader-name" role="presentation">
+            <span>JAYANT</span>
+          </div>
+        </div>
+      ) : null}
 
-      <main className="mx-auto w-full max-w-5xl px-5 pt-10 pb-14">
-        <div>
+      {phase === 'ready' ? (
+        <>
+          <div className="fixed inset-0 -z-10">
+            <Hero3D />
+          </div>
+          <Navbar />
+
+          <main className="mx-auto w-full max-w-5xl px-5 pt-10 pb-14">
+            <div>
           <section className="pb-10">
             <motion.h1
               initial={{ opacity: 0, y: 10 }}
@@ -222,8 +247,10 @@ export default function App() {
               <span className="opacity-80">Built with React, Vite, and Three.js</span>
             </div>
           </footer>
-        </div>
-      </main>
+            </div>
+          </main>
+        </>
+      ) : null}
     </div>
   )
 }

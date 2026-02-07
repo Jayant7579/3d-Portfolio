@@ -24,6 +24,74 @@ body {
 .glass {
   background: rgba(2, 6, 23, 0.55);
   border: 1px solid rgba(148, 163, 184, 0.12);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
 
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(700px 380px at 50% 40%, rgba(59, 130, 246, 0.12), transparent 60%),
+    linear-gradient(180deg, #04060b 0%, #050914 50%, #04060b 100%);
+}
+
+.loader-name {
+  font-size: clamp(2.8rem, 10vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.loader-name span {
+  display: inline-block;
+  color: transparent;
+  background-image: linear-gradient(0deg, #0ea5e9 0%, #38bdf8 55%, #3b82f6 100%),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.28) 0,
+      rgba(255, 255, 255, 0.28) 10px,
+      rgba(255, 255, 255, 0) 10px,
+      rgba(255, 255, 255, 0) 22px
+    );
+  background-size: 100% 220%, 220% 220%;
+  background-position: 0 100%, 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: loader-wave-fill 2.6s ease forwards, loader-wave-shimmer 1.6s linear infinite;
+  text-shadow: 0 0 25px rgba(59, 130, 246, 0.35);
+}
+
+@keyframes loader-wave-fill {
+  0% {
+    background-position: 0 100%;
+  }
+  60% {
+    background-position: 0 35%;
+  }
+  100% {
+    background-position: 0 0%;
+  }
+}
+
+@keyframes loader-wave-shimmer {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 0, 120% 120%;
+  }
+}
+
+.loader-screen--fade {
+  animation: loader-fade-out 0.6s ease forwards;
+}
+
+@keyframes loader-fade-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
