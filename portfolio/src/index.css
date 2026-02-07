@@ -39,9 +39,9 @@ body {
 }
 
 .loader-name {
-  font-size: clamp(2.8rem, 10vw, 6.5rem);
+  font-size: clamp(9.2rem, 14vw, 10.5rem);
   font-weight: 800;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.75rem;
   text-transform: uppercase;
 }
 
@@ -82,20 +82,26 @@ body {
   filter: blur(0.8px);
   opacity: 0;
   animation: loader-wave-reveal 0.2s ease forwards 1s,
-    loader-wave-fill 2.2s ease forwards 1s,
-    loader-wave-shimmer 1.6s linear infinite 1s;
+    loader-wave-fill 2.6s ease forwards 1s,
+    loader-wave-shimmer 2.2s linear infinite 1s;
   text-shadow: 0 0 25px rgba(59, 130, 246, 0.35);
 }
 
 @keyframes loader-wave-fill {
   0% {
-    background-position: 0 100%;
+    background-position: 0 120%, 0 0;
   }
-  60% {
-    background-position: 0 35%;
+  20% {
+    background-position: 18% 95%, 30% 18%;
+  }
+  45% {
+    background-position: -22% 70%, 70% 55%;
+  }
+  70% {
+    background-position: 24% 35%, 110% 95%;
   }
   100% {
-    background-position: 0 0%;
+    background-position: 0 -15%, 140% 140%;
   }
 }
 
