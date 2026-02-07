@@ -25,8 +25,8 @@ export default function App() {
   const [phase, setPhase] = useState<'loading' | 'fading' | 'ready'>('loading')
 
   useEffect(() => {
-    const fillTimer = window.setTimeout(() => setPhase('fading'), 2800)
-    const readyTimer = window.setTimeout(() => setPhase('ready'), 3400)
+    const fillTimer = window.setTimeout(() => setPhase('fading'), 3200)
+    const readyTimer = window.setTimeout(() => setPhase('ready'), 3800)
     return () => {
       window.clearTimeout(fillTimer)
       window.clearTimeout(readyTimer)
@@ -41,7 +41,7 @@ export default function App() {
           aria-label="Loading"
         >
           <div className="loader-name" role="presentation">
-            <span>JAYANT</span>
+            <span data-text="JAYANT">JAYANT</span>
           </div>
         </div>
       ) : null}
