@@ -13,7 +13,7 @@ export const projects = [
   },
   {
     title: 'Project Two',
-    description: 'Another project. Keep it to 1â€“2 lines and emphasize what you owned.',
+    description: 'Another project. Keep it to 1-2 lines and emphasize what you owned.',
     tech: ['Vite', 'Tailwind', 'Framer Motion'],
     links: [{ label: 'Code', href: 'https://github.com/your-handle/project2' }],
   },

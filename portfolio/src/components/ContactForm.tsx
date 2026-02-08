@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import emailjs from '@emailjs/browser'
-import { profile } from '../content/profile'
+import { contact } from '../content/contact'
 
 type FormState = {
   name: string
@@ -25,7 +25,7 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}\n`,
     )
-    return `mailto:${profile.contact.email}?subject=${subject}&body=${body}`
+    return `mailto:${contact.email}?subject=${subject}&body=${body}`
   }, [form])
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -88,7 +88,7 @@ export function ContactForm() {
           onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))}
           rows={5}
           className="glass resize-none rounded-xl px-3 py-2 text-sm text-slate-100 outline-none ring-1 ring-transparent focus:ring-violet-400/50"
-          placeholder="Tell me about your project…"
+          placeholder="Tell me about your project..."
           required
         />
       </label>
@@ -99,7 +99,7 @@ export function ContactForm() {
           className="rounded-xl bg-violet-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-violet-400 disabled:opacity-60"
           disabled={status === 'sending'}
         >
-          {status === 'sending' ? 'Sending…' : 'Send message'}
+          {status === 'sending' ? 'Sending...' : 'Send message'}
         </button>
 
         {!hasEmailJs() ? (
@@ -112,7 +112,7 @@ export function ContactForm() {
         ) : null}
 
         {status === 'sent' ? (
-          <span className="text-sm text-emerald-300">Sent — thanks!</span>
+          <span className="text-sm text-emerald-300">Sent - thanks!</span>
         ) : null}
         {status === 'error' ? (
           <span className="text-sm text-rose-300">Something went wrong. Try again.</span>
@@ -121,4 +121,3 @@ export function ContactForm() {
     </form>
   )
 }
-

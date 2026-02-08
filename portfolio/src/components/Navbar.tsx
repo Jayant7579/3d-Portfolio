@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { profile } from '../content/profile'
+import { basics } from '../content/basics'
 
 const links = [
   { id: 'about', label: 'About' },
@@ -27,9 +27,9 @@ export function Navbar() {
           aria-label="Scroll to top"
         >
           <div className="text-base font-semibold tracking-tight text-slate-50 md:text-lg">
-            {profile.name}
+            {basics.name}
           </div>
-          <div className="text-sm text-slate-300 md:text-base">{profile.title}</div>
+          <div className="text-sm text-slate-300 md:text-base">{basics.title}</div>
         </button>
 
         <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
@@ -47,9 +47,20 @@ export function Navbar() {
               {l.label}
             </button>
           ))}
+          <a
+            href={basics.resumeUrl}
+            target={basics.resumeUrl.startsWith('http') ? '_blank' : undefined}
+            rel={basics.resumeUrl.startsWith('http') ? 'noreferrer' : undefined}
+            className={clsx(
+              'rounded-full px-4 py-2 text-sm font-semibold transition md:text-base',
+              'border border-cyan-300/30 bg-cyan-300/10 text-cyan-100 hover:bg-cyan-300/20',
+              'focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300/70',
+            )}
+          >
+            Resume
+          </a>
         </nav>
       </div>
     </div>
   )
 }
-
