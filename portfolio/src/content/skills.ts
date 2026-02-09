@@ -2,7 +2,6 @@ import type { Skill } from './types'
 
 export const skills = [
   { name: 'Python', level: 'Core' },
-  { name: 'Advanced Python' },
   { name: 'REST APIs' },
   { name: 'Flask' },
   { name: 'FastAPI' },
