@@ -2,31 +2,34 @@ import type { Project } from './types'
 
 export const projects = [
   {
-    title: 'Calendar in C',
-    description: 'Program that generates a calendar for a specified year.',
-    tech: ['C'],
-    links: [
-      { label: 'Code', href: 'https://github.com/Jayant7579/calendar-in-c' },
-    ],
+    title: 'Brain Tumor Detector',
+    description: 'Brain tumor detector project.',
+    tech: ['AI/ML'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/Brain-Tumor-Detector' }],
   },
   {
-    title: 'Phonebook Application in C',
-    description:
-      'Console phonebook app for saving contact numbers and maintaining a stored list.',
-    tech: ['C'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/phonebook-application-in-c' }],
+    title: 'Food Ordering Website',
+    description: 'Food ordering website project.',
+    tech: ['Web'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/food-ordering-website' }],
   },
   {
-    title: 'Snake Game in Python',
-    description: 'Classic snake game built in Python.',
-    tech: ['Python'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/snake-game-in-python' }],
+    title: 'CrewAI Analyzer',
+    description: 'CrewAI-based analyzer project.',
+    tech: ['GenAI'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/CrewAI-Analyzer' }],
   },
   {
-    title: 'Oasis',
-    description: 'HTML-based project repository.',
-    tech: ['HTML'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/oasis' }],
+    title: 'Ebook Store',
+    description: 'Ebook store web project.',
+    tech: ['Web'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/Ebook-Store' }],
+  },
+  {
+    title: 'GenAI Resume Analyzer',
+    description: 'GenAI resume analyzer project.',
+    tech: ['GenAI'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/GenAI-Resume-Analyzer' }],
   },
   {
     title: 'Video Conferencing',
