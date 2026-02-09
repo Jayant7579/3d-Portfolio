@@ -21,7 +21,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 export function HeroSection() {
   return (
     <section className="pb-10">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-start">
         <div>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
@@ -79,7 +79,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="lg:pt-2">
+        <div className="lg:pt-2 lg:justify-self-end lg:max-w-md lg:pl-6">
           <div className="about-card">
             <div className="about-card__glow" aria-hidden="true" />
             <div className="about-card__glow about-card__glow--secondary" aria-hidden="true" />

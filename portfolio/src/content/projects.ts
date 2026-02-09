@@ -2,19 +2,42 @@ import type { Project } from './types'
 
 export const projects = [
   {
-    title: 'Task Manager WebApp',
-    description:
-      'A short, outcome-focused description. Mention what problem it solved and the impact.',
-    tech: ['React', 'TypeScript', 'Three.js'],
+    title: 'Calendar in C',
+    description: 'Program that generates a calendar for a specified year.',
+    tech: ['C'],
     links: [
-      { label: 'Live', href: 'https://example.com' },
-      { label: 'Code', href: 'https://github.com/your-handle/project' },
+      { label: 'Code', href: 'https://github.com/Jayant7579/calendar-in-c' },
     ],
   },
   {
-    title: 'Project Two',
-    description: 'Another project. Keep it to 1-2 lines and emphasize what you owned.',
-    tech: ['Vite', 'Tailwind', 'Framer Motion'],
-    links: [{ label: 'Code', href: 'https://github.com/your-handle/project2' }],
+    title: 'Phonebook Application in C',
+    description:
+      'Console phonebook app for saving contact numbers and maintaining a stored list.',
+    tech: ['C'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/phonebook-application-in-c' }],
+  },
+  {
+    title: 'Snake Game in Python',
+    description: 'Classic snake game built in Python.',
+    tech: ['Python'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/snake-game-in-python' }],
+  },
+  {
+    title: 'Oasis',
+    description: 'HTML-based project repository.',
+    tech: ['HTML'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/oasis' }],
+  },
+  {
+    title: 'Video Conferencing',
+    description: 'JavaScript project focused on video conferencing.',
+    tech: ['JavaScript'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/video-conferencing' }],
+  },
+  {
+    title: 'Social Media Clone',
+    description: 'JavaScript-based social media clone project.',
+    tech: ['JavaScript'],
+    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/Social-Media-Clone' }],
   },
 ] satisfies Project[]
