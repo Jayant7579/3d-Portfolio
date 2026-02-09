@@ -105,6 +105,11 @@ body {
   gap: 1.25rem;
 }
 
+.projects-slider {
+  display: grid;
+  gap: 1.25rem;
+}
+
 .skills-categories {
   display: grid;
   gap: 1rem;
@@ -344,7 +349,22 @@ body {
   flex-wrap: wrap;
 }
 
+.projects-slider__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 .skills-slider__hint {
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(148 163 184);
+}
+
+.projects-slider__hint {
   font-size: 0.72rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -362,7 +382,24 @@ body {
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
+.projects-slider__btn {
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.5);
+  color: rgb(226 232 240);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
 .skills-slider__btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(56, 189, 248, 0.6);
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.projects-slider__btn:hover {
   transform: translateY(-1px);
   border-color: rgba(56, 189, 248, 0.6);
   background: rgba(56, 189, 248, 0.12);
@@ -380,7 +417,24 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+.projects-slider__track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.25rem 0.5rem 1rem;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0.5rem;
+  scrollbar-width: thin;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
 .skills-slider__track:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 4px;
+}
+
+.projects-slider__track:focus-visible {
   outline: 2px solid rgba(56, 189, 248, 0.6);
   outline-offset: 4px;
 }
@@ -388,6 +442,13 @@ body {
 .skills-slider__card {
   flex: 0 0 auto;
   width: clamp(280px, 36vw, 360px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.projects-slider__card {
+  flex: 0 0 auto;
+  width: clamp(320px, 42vw, 460px);
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -524,5 +585,23 @@ body {
 
   .skills-slider__card {
     width: min(90vw, 340px);
+  }
+
+  .projects-slider__controls {
+    justify-content: center;
+  }
+
+  .projects-slider__hint {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
+
+  .projects-slider__track {
+    padding: 0.25rem 0.6rem 1rem;
+  }
+
+  .projects-slider__card {
+    width: min(92vw, 360px);
   }
 }
