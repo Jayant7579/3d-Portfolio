@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const SECTION_IDS = ['about', 'skills', 'projects', 'experience', 'achievements', 'contact']
+const SECTION_IDS = ['skills', 'projects', 'experience', 'achievements', 'contact']
 
 function ScrollDrivenKnot() {
   const meshRef = useRef<Mesh | null>(null)

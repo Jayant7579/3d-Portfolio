@@ -3,7 +3,6 @@ import { Hero3D } from './components/Hero3D'
 import { Loader } from './components/Loader'
 import { Navbar } from './components/Navbar'
 import { basics } from './content/basics'
-import { AboutSection } from './sections/AboutSection'
 import { AchievementsSection } from './sections/AchievementsSection'
 import { ContactSection } from './sections/ContactSection'
 import { ExperienceSection } from './sections/ExperienceSection'
@@ -38,7 +37,6 @@ export default function App() {
           <main className="mx-auto w-full max-w-5xl px-5 pt-10 pb-14">
             <div>
               <HeroSection />
-              <AboutSection />
               <SkillsSection />
               <ProjectsSection />
               <ExperienceSection />

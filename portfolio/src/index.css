@@ -28,6 +28,78 @@ body {
   backdrop-filter: blur(14px);
 }
 
+.about-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.65), rgba(2, 6, 23, 0.75));
+  box-shadow: 0 30px 60px rgba(2, 6, 23, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  transform-style: preserve-3d;
+  perspective: 900px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.18), transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.18), transparent 55%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.about-card:hover {
+  transform: rotateX(4deg) rotateY(-4deg) translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 40px 70px rgba(2, 6, 23, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.2);
+}
+
+.about-card__glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -80px;
+  right: -60px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 70%);
+  filter: blur(20px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.about-card__glow--secondary {
+  top: auto;
+  right: auto;
+  bottom: -90px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.35), transparent 70%);
+}
+
+.about-card__content {
+  position: relative;
+  transform: translateZ(20px);
+}
+
+.about-card__eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.9);
+  margin-bottom: 0.75rem;
+}
+
+.about-card__text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgb(226, 232, 240);
+  white-space: pre-line;
+}
+
 .skills-slider {
   display: grid;
   gap: 1.25rem;
