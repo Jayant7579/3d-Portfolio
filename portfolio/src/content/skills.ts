@@ -7,7 +7,7 @@ export type SkillCategory = {
   skills: Skill[]
 }
 
-export const skillCategories = [
+export const skillCategories: SkillCategory[] = [
   {
     id: 'languages',
     title: 'Languages',
@@ -87,6 +87,6 @@ export const skillCategories = [
       { name: 'Continuous Learning' },
     ],
   },
-] satisfies SkillCategory[]
+]
 
-export const skills = skillCategories.flatMap((category) => category.skills) satisfies Skill[]
+export const skills: Skill[] = skillCategories.flatMap((category) => category.skills)

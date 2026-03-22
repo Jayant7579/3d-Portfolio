@@ -1,6 +1,6 @@
 import type { Project } from './types'
 
-export const projects = [
+export const projects: Project[] = [
   {
     title: 'Brain Tumor Detection Model (AI Healthcare Hackathon)',
     description:
@@ -19,4 +19,4 @@ export const projects = [
       'Built agriculture chatbots and a leaf-infection classifier using Python, AI, and OpenCV for fast diagnosis.',
     tech: ['Python', 'Artificial Intelligence', 'OpenCV'],
   },
-] satisfies Project[]
+]
