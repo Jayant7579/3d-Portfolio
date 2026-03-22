@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar'
 import { basics } from './content/basics'
 import { AchievementsSection } from './sections/AchievementsSection'
 import { ContactSection } from './sections/ContactSection'
+import { EducationSection } from './sections/EducationSection'
 import { ExperienceSection } from './sections/ExperienceSection'
 import { HeroSection } from './sections/HeroSection'
 import { ProjectsSection } from './sections/ProjectsSection'
@@ -40,6 +41,7 @@ export default function App() {
               <SkillsSection />
               <ProjectsSection />
               <ExperienceSection />
+              <EducationSection />
               <AchievementsSection />
               <ContactSection />
               <SiteFooter />

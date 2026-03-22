@@ -2,45 +2,21 @@ import type { Project } from './types'
 
 export const projects = [
   {
-    title: 'Brain Tumor Detector',
-    description: 'Brain tumor detector project.',
-    tech: ['AI/ML'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/Brain-Tumor-Detector' }],
+    title: 'Brain Tumor Detection Model (AI Healthcare Hackathon)',
+    description:
+      'Built a VGG16-based model in Keras with preprocessing and augmentation, achieving 70.2% test accuracy.',
+    tech: ['Python', 'Machine Learning', 'Keras', 'VGG16'],
   },
   {
-    title: 'Food Ordering Website',
-    description: 'Food ordering website project.',
-    tech: ['Web'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/food-ordering-website' }],
+    title: 'E-Book Store Hackathon 3.0',
+    description:
+      'Developed a full-stack web application with React.js and Node.js, integrating an analytics dashboard to monitor user behavior.',
+    tech: ['React.js', 'Node.js', 'MongoDB', 'Tailwind CSS'],
   },
   {
-    title: 'CrewAI Analyzer',
-    description: 'CrewAI-based analyzer project.',
-    tech: ['GenAI'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/CrewAI-Analyzer' }],
-  },
-  {
-    title: 'Ebook Store',
-    description: 'Ebook store web project.',
-    tech: ['Web'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/Ebook-Store' }],
-  },
-  {
-    title: 'GenAI Resume Analyzer',
-    description: 'GenAI resume analyzer project.',
-    tech: ['GenAI'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/GenAI-Resume-Analyzer' }],
-  },
-  {
-    title: 'Video Conferencing',
-    description: 'JavaScript project focused on video conferencing.',
-    tech: ['JavaScript'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/video-conferencing' }],
-  },
-  {
-    title: 'Social Media Clone',
-    description: 'JavaScript-based social media clone project.',
-    tech: ['JavaScript'],
-    links: [{ label: 'Code', href: 'https://github.com/Jayant7579/Social-Media-Clone' }],
+    title: 'Intell-i-Green Hackathon (Parul University)',
+    description:
+      'Built agriculture chatbots and a leaf-infection classifier using Python, AI, and OpenCV for fast diagnosis.',
+    tech: ['Python', 'Artificial Intelligence', 'OpenCV'],
   },
 ] satisfies Project[]

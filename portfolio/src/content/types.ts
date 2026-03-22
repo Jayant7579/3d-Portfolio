@@ -14,4 +14,11 @@ export type Experience = {
   bullets: string[]
 }
 
+export type Education = {
+  school: string
+  degree: string
+  period: string
+  details?: string[]
+}
+
 export type SocialLink = { label: string; href: string }

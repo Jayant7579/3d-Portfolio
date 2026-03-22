@@ -1,4 +1,4 @@
 export const achievements = [
-  'Certification / Award / Scholarship',
-  'Conference talk / Hackathon win / Publication',
+  'Explored Generative AI concepts using LLMs for chatbot-based solutions and automation workflows.',
+  'Finalist - University AI Hackathon, National Hackathon 3.0.',
 ] as const

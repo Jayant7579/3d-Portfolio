@@ -23,10 +23,15 @@ export function ContactForm() {
   const mailtoHref = useMemo(() => {
     const subject = encodeURIComponent(`Portfolio contact from ${form.name || 'someone'}`)
     const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}\n`,
+      `You got a new message via your portfolio.\n\nName: ${form.name}\nEmail: ${form.email}\n\n${form.message}\n`,
     )
     return `mailto:${contact.email}?subject=${subject}&body=${body}`
   }, [form])
+
+  const emailSubject = useMemo(
+    () => `Portfolio contact from ${form.name || 'someone'}`,
+    [form.name],
+  )
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -43,7 +48,13 @@ export function ContactForm() {
       await emailjs.send(
         EMAILJS_SERVICE_ID!,
         EMAILJS_TEMPLATE_ID!,
-        { from_name: form.name, reply_to: form.email, message: form.message },
+        {
+          from_name: form.name,
+          from_email: form.email,
+          reply_to: form.email,
+          message: form.message,
+          subject: emailSubject,
+        },
         { publicKey: EMAILJS_PUBLIC_KEY! },
       )
       setStatus('sent')
